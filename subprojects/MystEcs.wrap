@@ -1,0 +1,6 @@
+[wrap-git]
+
+directory = MystEcs
+url = https://github.com/mystborn/MystEcs.git
+revision = head
+clone-recursive = true
