@@ -281,7 +281,7 @@ SDL_bool input_manager_init(int action_count) {
         map.mouse = 0;
     }
 
-    input_manager.deadzone = SDL_MAX_SINT16 * .15f;
+    input_manager.deadzone = (Uint16)(SDL_MAX_SINT16 * .15f);
 
     input_manager.mouse_current = SDL_GetMouseState(&input_manager.mouse_position_current.x, &input_manager.mouse_position_current.y);
 

@@ -37,7 +37,8 @@ else
     
         sdl = c_comp.find_library('SDL2',
             required: true,
-            dirs: sdl_dir + '/lib/' + cpu)
+            dirs: sdl_dir + '/lib/' + cpu
+        )
     endif
 endif
 
@@ -60,9 +61,14 @@ sdl_utils = static_library('SDL_utils',
     name_prefix: ''
 )
 
-shared_library('SDL_utils',
+sdl_utils_shared = shared_library('SDL_utils',
     sources,
     include_directories: inc,
     dependencies: deps,
     install: true
+)
+
+declare_dependency(include_directories: inc,
+    link_with: sdl_utils_shared,
+    dependencies: deps
 )
