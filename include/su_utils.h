@@ -1,8 +1,6 @@
 #ifndef SDL_UTILS_UTILS
 #define SDL_UTILS_UTILS
 
-#define SDL_UTILS_NO_STD_LIB
-
 #ifdef SDL_UTILS_NO_STD_LIB
 
 #include <SDL.h>
