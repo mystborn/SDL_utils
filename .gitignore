@@ -1,0 +1,3 @@
+build/
+subprojects/myst_ecs/
+.clang_complete
