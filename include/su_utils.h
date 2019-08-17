@@ -1,14 +1,20 @@
 #ifndef SDL_UTILS_UTILS
 #define SDL_UTILS_UTILS
 
+/**
+    Wraps some commonly used functionality in case you don't want or can't
+    use the standard library. In that case, fallback to the functions
+    used by SDL.
+*/
+
 #ifdef SDL_UTILS_NO_STD_LIB
 
 #include <SDL.h>
 
-#define su_malloc(size) SDL_malloc(size)
-#define su_realloc(ptr, size) SDL_realloc(ptr, size)
-#define su_calloc(nelems, size) SDL_calloc(nelems, size)
-#define su_free(ptr) SDL_free(ptr)
+#define su_malloc(size)            SDL_malloc(size)
+#define su_realloc(ptr, size)      SDL_realloc(ptr, size)
+#define su_calloc(nelems, size)    SDL_calloc(nelems, size)
+#define su_free(ptr)               SDL_free(ptr)
 
 #define su_memmove(dst, src, size) SDL_memmove(dst, src, size)
 

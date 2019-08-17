@@ -5,12 +5,41 @@
 #include "su_data_types.h"
 #include "su_utils.h"
 
+/**
+    Defines a 2D camera that controls the view into the game world.
+
+    You should never alter the fields of the camera directly, instead
+    use the provided functions to do so.
+*/
 typedef struct Camera {
+    /**
+        Defines the bounds of the view in the game world.
+    */
     Rectangle view;
+
+    /**
+        Defines the rotation of the camera.
+    */
     double rotation;
+
+    /**
+        A pointer to a rectangle that defines the bounds of the game window that is drawn to.
+    */
     Rectangle* viewport;
+
+    /**
+        The renderer used by this camera.
+    */
     SDL_Renderer* renderer;
+
+    /**
+        The render_target that is created by this camera to draw to.
+    */
     Texture* render_target;
+
+    /**
+        The pixel format used by this camera and its render_target.
+    */
     Uint32 pixel_format;
 } Camera;
 
