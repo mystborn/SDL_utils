@@ -42,7 +42,7 @@ else
     endif
 endif
 
-myst_ecs = subproject('myst_ecs')
+myst_ecs = subproject('MystEcs')
 
 deps = [
     sdl,
