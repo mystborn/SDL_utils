@@ -62,6 +62,11 @@ void scene_free_resources(Scene* scene) {
     ecs_world_free(scene->world);
 }
 
+void scene_free(Scene* scene) {
+    scene_free_resources(scene);
+    su_free(scene);
+}
+
 void scene_update(Scene* scene, float delta) {
     ecs_system_update((EcsSystem*)scene->update, delta);
 }
@@ -117,4 +122,29 @@ Uint32 scene_get_background(Scene* scene) {
 
     SDL_FreeFormat(format);
     return pixel;
+}
+
+void scene_push(Scene* scene) {
+    ECS_ARRAY_RESIZE(scene_manager.scenes, scene_manager.capacity, scene_manager.count+1, sizeof(Scene));
+    scene_manager.scenes[scene_manager.count++] = scene;
+}
+
+void scene_change(Scene* scene) {
+    while(scene_manager.count > 0)
+        scene_pop(true);
+    scene_push(scene);
+}
+
+
+Scene* scene_pop(bool free_scene) {
+    Scene* scene = scene_manager.scenes[--scene_manager.count];
+    if(free_scene)
+        scene_free(scene);
+    return scene;
+}
+
+Scene* scene_current(void) {
+    if(scene_manager.count == 0)
+        return NULL;
+    return scene_manager.scenes[scene_manager.count - 1];
 }
