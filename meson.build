@@ -68,7 +68,7 @@ sdl_utils_shared = shared_library('SDL_utils',
     install: true
 )
 
-declare_dependency(include_directories: inc,
+sdl_utils_dep = declare_dependency(include_directories: inc,
     link_with: sdl_utils_shared,
     dependencies: deps
 )
