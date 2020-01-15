@@ -4,21 +4,21 @@ c_comp = meson.get_compiler('c')
 
 cpus = {
     'aarch64' : 'x64',
-    'arc' : 'x32',
-    'arm' : 'x32',
+    'arc' : 'x86',
+    'arm' : 'x86',
     'ia64' : 'x64',
-    'mips' : 'x32',
+    'mips' : 'x86',
     'mips64' : 'x64',
-    'ppc' : 'x32',
+    'ppc' : 'x86',
     'ppc64' : 'x64',
-    'riscv32' : 'x32',
+    'riscv32' : 'x86',
     'riscv64' : 'x64',
-    'rx' : 'x32',
-    'sparc' : 'x32',
+    'rx' : 'x86',
+    'sparc' : 'x86',
     'sparc64' : 'x64',
-    'wasm32' : 'x32',
+    'wasm32' : 'x86',
     'wasm64' : 'x64',
-    'x86' : 'x32',
+    'x86' : 'x86',
     'x86_64' : 'x64'
 }
 
@@ -34,6 +34,8 @@ else
         sdl = disabler()
     else
         include_files += sdl_dir + '/include'
+
+        message(sdl_dir + '/lib/' + cpu)
     
         sdl = c_comp.find_library('SDL2',
             required: true,
